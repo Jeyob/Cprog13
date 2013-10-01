@@ -134,6 +134,19 @@ public:
 		v.erase(v.begin() + 2, v.begin() + 4);
 		TS_TRACE("v.erase(v.begin() + 2, v.begin()+ 4);");
 		TS_TRACE(v.showVector());
+		TS_ASSERT_EQUALS(v.size(), 6);
+
+		//Remove last element
+		v.erase(v.begin()+5, v.end());
+		TS_ASSERT_EQUALS(v.size(), 5);
+		TS_ASSERT_EQUALS(v[4], 10);
+		TS_TRACE(v.showVector());
+
+		v.erase(v.begin(), v.begin() + 1 );
+		TS_ASSERT_EQUALS(v.size(), 4);
+		TS_ASSERT_EQUALS(v[0], 5);
+		TS_TRACE(v.showVector());
+
 	}
 
 
@@ -442,6 +455,7 @@ public:
 		TS_TRACE(v.showVector());
 		TS_ASSERT_EQUALS(v.size(), 6);
 
+		//Control values with expected
 		for( int i = 0; i<6; ++i ) {
 			TS_ASSERT_EQUALS(v[i], Dexp[i]);
 		}
@@ -492,14 +506,16 @@ public:
 
 		v.insert(0, "m");
 		v.insert(0, "p");
-
+		TS_TRACE("After two inserts");
 		TS_TRACE(v.showVector());
 		TS_ASSERT(v.size() == 13);
 
+		//ascending
 		v.unique_sort();
 
 		TS_ASSERT(v[11] == "m" && v[12] == "p");
 
+		
 	}
 
 	void testUnique_sort_empty() {

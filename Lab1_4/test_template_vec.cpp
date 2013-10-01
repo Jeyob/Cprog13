@@ -10,10 +10,12 @@ int main()
 	Vector<unsigned int> v(10,111);
 	v  = {2};
 	std::cout<<v.showVector()<<std::endl;
-	v.erase(v.begin(), v.end());
+	v.unique_sort();
 	std::cout<<v.showVector()<<std::endl;
 
-
+	v.push_back(3);
+	std::cout<<v.size()<<std::endl;
+	std::cout<<v[1]<<std::endl;
 
 //		 Vector<Problem::Problematic> v(0);
 //		  std::vector<Problem::Problematic> vref(0);

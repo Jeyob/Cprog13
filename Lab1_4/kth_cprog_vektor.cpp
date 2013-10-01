@@ -51,82 +51,82 @@ public:
 			_elemAry_(other._elemAry_)
 			{
 
-			//leave in a destructable state
-			other._elemAry_ = NULL;
-			other._size_ = 0;
-			other._capacity_ = 0;
-		}
-
-		~Vector() { //Destructor
-			delete[] _elemAry_;
-		}
-
-		Vector<T>& operator=(const Vector<T>&); // copy assignment operator
-		Vector<T>& operator=(Vector<T>&&);//move assignment operator
-		Vector<T>& operator=(std::initializer_list<T>);
-		T& operator[](const size_t);
-		const T& operator[](const size_t) const;
-		void push_back(T);
-		size_t size() const {return _size_;} //number of acutal items
-		size_t capacity() {return _capacity_;} //capacity of vecotr
-		void insert(size_t, T);//insert item T, before item at pos size_t
-		void clear();//clears all items in array
-		void erase(size_t);//erase items at position
-		void erase(T* start, T* end);
-		bool exists(const T &);//check existens
-		void sort(bool ascending = true);
-		void unique_sort(bool ascending = true);
-		T* begin() {return _elemAry_;}
-		T* end() {return _elemAry_+_size_;}
-
-		std::string showVector() const { //skriver ut vår vekor
-			std::stringstream ss;
-			std::string vStr = "";
-			for (size_t i = 0; i < _size_; i++) {
-				ss << _elemAry_[i] << " ";
+				//leave in a destructable state
+				other._elemAry_ = NULL;
+				other._size_ = 0;
+				other._capacity_ = 0;
 			}
-			return ss.str();
-		}
-	private:
 
-		void _free_() {
-			delete[] _elemAry_; //free memory!
-			_elemAry_ = NULL;
-			_capacity_ = 0;
-			_size_ = 0;
-		}
+			~Vector() { //Destructor
+				delete[] _elemAry_;
+			}
 
-		void reserve(const size_t);
+			Vector<T>& operator=(const Vector<T>&); // copy assignment operator
+			Vector<T>& operator=(Vector<T>&&);//move assignment operator
+			Vector<T>& operator=(std::initializer_list<T>);
+			T& operator[](const size_t);
+			const T& operator[](const size_t) const;
+			void push_back(T);
+			size_t size() const {return _size_;} //number of acutal items
+			size_t capacity() {return _capacity_;} //capacity of vecotr
+			void insert(size_t, T);//insert item T, before item at pos size_t
+			void clear();//clears all items in array
+			void erase(size_t);//erase items at position
+			void erase(T* start, T* end);//removes a range of elements. start points to the first element to be erased and end points to one pas the last element to be erased
+			bool exists(const T &);//check existens
+			void sort(bool ascending = true);
+			void unique_sort(bool ascending = true);
+			T* begin() {return _elemAry_;}
+			T* end() {return _elemAry_+_size_;}
 
-		void check_need_alloc() {
-			if(_size_ == _capacity_) {
-				if (_capacity_ == 0) {
-					reserve(spareCapacity);
-				} else {
-					reserve(2*_capacity_);
+			std::string showVector() const { //skriver ut vår vekor
+				std::stringstream ss;
+				std::string vStr = "";
+				for (size_t i = 0; i < _size_; i++) {
+					ss << _elemAry_[i] << " ";
+				}
+				return ss.str();
+			}
+		private:
+
+			void _free_() {
+				delete[] _elemAry_; //free memory!
+				_elemAry_ = NULL;
+				_capacity_ = 0;
+				_size_ = 0;
+			}
+
+			void reserve(const size_t);
+
+			void check_need_alloc() {
+				if(_size_ == _capacity_) {
+					if (_capacity_ == 0) {
+						reserve(spareCapacity);
+					} else {
+						reserve(2*_capacity_);
+					}
 				}
 			}
-		}
 
-		/**
-		 * shift_right
-		 *
-		 * @param: this parameter tells us the pivotal point
-		 */
-		void shift_right( const size_t );
+			/**
+			 * shift_right
+			 *
+			 * @param: this parameter tells us the pivotal point
+			 */
+			void shift_right( const size_t );
 
-		/***
-		 * shift_left
-		 *
-		 * @param shift contents of the array to the left
-		 */
-		void shift_left( const size_t );
+			/***
+			 * shift_left
+			 *
+			 * @param shift contents of the array to the left
+			 */
+			void shift_left( const size_t );
 
-		size_t _size_; //filled items
-		size_t _capacity_;//vCapacity of number of elements
-		T* _elemAry_;//pointer to array of unsigned int's
+			size_t _size_; //filled items
+			size_t _capacity_;//vCapacity of number of elements
+			T* _elemAry_;//pointer to array of unsigned int's
 
-	};
+		};
 
 template<typename T>
 Vector<T>& Vector<T>::operator=(const Vector<T>& other) {
@@ -138,7 +138,7 @@ Vector<T>& Vector<T>::operator=(const Vector<T>& other) {
 		_elemAry_ = new T[_capacity_]();
 
 		size_t pos = 0;
-		for( int pos = 0; pos != other._size_; ++pos ) {
+		for (int pos = 0; pos != other._size_; ++pos) {
 			_elemAry_[pos] = other[pos];
 		}
 
@@ -223,9 +223,10 @@ void Vector<T>::shift_right(const size_t start) {
 		//check space
 		check_need_alloc();
 
-		int pos = this->_size_-1;
-		for( T* currPtr = this->end()-1; currPtr!=(this->begin()+start)-1; --currPtr, --pos ){
-			this->_elemAry_[pos+1] = this->_elemAry_[pos];
+		int pos = this->_size_ - 1;
+		for (T* currPtr = this->end() - 1;
+				currPtr != (this->begin() + start) - 1; --currPtr, --pos) {
+			this->_elemAry_[pos + 1] = this->_elemAry_[pos];
 		}
 
 //		//shift elements
@@ -238,15 +239,16 @@ void Vector<T>::shift_right(const size_t start) {
 }
 
 template<typename T>
-void Vector<T>::shift_left( const size_t start ) {
+void Vector<T>::shift_left(const size_t start) {
 	try {
 
 		int pos = start;
-		for( T* currPtr = this->begin() + pos; currPtr!=this->end(); ++currPtr, ++pos ){
-			this->_elemAry_[pos-1] = this->_elemAry_[pos];
+		for (T* currPtr = this->begin() + pos; currPtr != this->end();
+				++currPtr, ++pos) {
+			this->_elemAry_[pos - 1] = this->_elemAry_[pos];
 		}
 
-	}catch (std::exception& e) {
+	} catch (std::exception& e) {
 
 	}
 }
@@ -258,7 +260,9 @@ void Vector<T>::reserve(const size_t capacity) {
 	_elemAry_ = new T[capacity]();
 	//copy elements
 
-	for( size_t i = 0; i < this->size(); ++i ) { _elemAry_[i] = tmp[i]; }
+	for (size_t i = 0; i < this->size(); ++i) {
+		_elemAry_[i] = tmp[i];
+	}
 	_capacity_ = capacity;
 
 	tmp = NULL;
@@ -272,7 +276,7 @@ template<typename T>
 void Vector<T>::sort(bool ascending) {
 	std::sort(this->begin(), this->end(), std::less<T>());
 	if (!ascending) {
-		std::reverse(this->begin(), this->end() );
+		std::reverse(this->begin(), this->end());
 	}
 }
 
@@ -283,9 +287,9 @@ void Vector<T>::unique_sort(bool ascending) {
 	sort(ascending);
 
 	/* remove any duplicates */
-	T* It = std::unique(this->begin(), this->end());
-	erase(It, this->end()); //delete all elements beyond It.
-	_size_ = std::distance(this->begin(), It);
+	auto It = std::unique(this->begin(), this->end());
+	_size_ = _size_ - ((_elemAry_+_size_)-It);
+	//	erase(It, this->end()); //delete all elements beyond It.
 
 }
 
@@ -297,7 +301,7 @@ void Vector<T>::clear() {
 template<typename T>
 void Vector<T>::erase(size_t pos) {
 	if (pos >= _size_) {
-		throw std::out_of_range("index position out of bounds");
+		throw std::out_of_range("subscript out of range");
 	}
 	try {
 		//call destructor on element
@@ -305,27 +309,37 @@ void Vector<T>::erase(size_t pos) {
 
 		//last element in array?
 		if (_size_ - 1) {
-			//if we get here not last element in array
 
 			//erasing last element?
-			if (_size_ != pos + 1) {
-				shift_left(pos + 1);
+			shift_left(pos + 1);
 //				memmove(_elemAry_ + pos, _elemAry_ + (pos + 1),
 //						sizeof(T) * (_size_ - pos)); //shift to left
-			}
+
 		}
-			--_size_;
+		--_size_;
 
 	} catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
 }
 
+/***
+ * Erases a range of elements
+ *
+ * start - denotes the first element to be removed
+ * end - denotes one past the last element to be removed
+ */
+
 template<typename T>
 void Vector<T>::erase(T* start, T* end) {
-	int iters = 0;
-	for (T * last = end-1; last != start-1; last--, iters++ ) {
-		erase( std::distance(this->begin(), last)); //invoke call to erase in order to move a collection of values
+
+	if (start != end) {
+		int iters = std::distance(start, end); //number of times we call erase
+		int pos = std::distance( this->begin(), start );
+
+		for ( int i = 0; i < iters; ++i ) {
+			erase(pos); //invoke call to erase in order to move a collection of values
+		}
 	}
 }
 

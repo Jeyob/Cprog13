@@ -288,7 +288,8 @@ void Vector<T>::unique_sort(bool ascending) {
 
 	/* remove any duplicates */
 	auto It = std::unique(this->begin(), this->end());
-	erase(It, this->end()); //delete all elements beyond It.
+	_size_ = _size_ - ((_elemAry_+_size_)-It);
+	//	erase(It, this->end()); //delete all elements beyond It.
 
 }
 
@@ -300,7 +301,7 @@ void Vector<T>::clear() {
 template<typename T>
 void Vector<T>::erase(size_t pos) {
 	if (pos >= _size_) {
-		throw std::out_of_range("index position out of bounds");
+		throw std::out_of_range("subscript out of range");
 	}
 	try {
 		//call destructor on element
