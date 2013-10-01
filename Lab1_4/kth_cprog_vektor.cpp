@@ -243,7 +243,7 @@ void Vector<T>::shift_left( const size_t start ) {
 
 		int pos = start;
 		for( T* currPtr = this->begin() + pos; currPtr!=this->end(); ++currPtr, ++pos ){
-			this->_elemAry_[pos] = this->_elemAry_[pos+1];
+			this->_elemAry_[pos-1] = this->_elemAry_[pos];
 		}
 
 	}catch (std::exception& e) {
@@ -309,7 +309,7 @@ void Vector<T>::erase(size_t pos) {
 
 			//erasing last element?
 			if (_size_ != pos + 1) {
-				shift_left(pos);
+				shift_left(pos + 1);
 //				memmove(_elemAry_ + pos, _elemAry_ + (pos + 1),
 //						sizeof(T) * (_size_ - pos)); //shift to left
 			}
@@ -325,7 +325,7 @@ template<typename T>
 void Vector<T>::erase(T* start, T* end) {
 	int iters = 0;
 	for (T * last = end-1; last != start-1; last--, iters++ ) {
-		erase( std::distance(this->begin(), last) - 1 ); //invoke call to erase in order to move a collection of values
+		erase( std::distance(this->begin(), last)); //invoke call to erase in order to move a collection of values
 	}
 }
 

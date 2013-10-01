@@ -8,8 +8,11 @@ int main()
 {
 
 	Vector<unsigned int> v(10,111);
-	v.insert(0, 1989);
-	v.insert(10, 1990);
+	v  = {2};
+	std::cout<<v.showVector()<<std::endl;
+	v.erase(v.begin(), v.end());
+	std::cout<<v.showVector()<<std::endl;
+
 
 
 //		 Vector<Problem::Problematic> v(0);

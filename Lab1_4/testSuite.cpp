@@ -75,7 +75,7 @@ public:
 		TS_ASSERT(vref[1] == 5.0);
 
 
-		TS_TRACE("Check vector size = ");
+		TS_TRACE("Check vector size ");
 		TS_ASSERT(v.size() == 4);
 		TS_ASSERT(vref.size() == 4);
 
@@ -92,6 +92,50 @@ public:
 		TS_ASSERT(vref.size() == 3);
 
 	}
+
+
+
+
+	void testErase2Args() {
+
+		Vector<int> v (5);
+		v[0] = 4;
+		v[1] = 5;
+		v[2] = 6;
+		v[3] = 7;
+		v[4] = 8;
+
+		
+		TS_TRACE(v.showVector());
+		TS_TRACE(v.size());
+
+		v.erase(v.begin() + 2, v.end()); // Remove all values form 6 and onwards, leaving 4, 5
+
+		TS_ASSERT_EQUALS(v.size(), 2);
+		TS_ASSERT(v[0] == 4 && v[1] == 5);
+		TS_TRACE(v.showVector());
+
+
+		TS_TRACE("Erasing a smaller vector");
+		v = {2};
+		
+		TS_TRACE(v.showVector());
+
+		v.erase(v.begin(),v.end());
+
+		TS_ASSERT_EQUALS(v.size(), 0);
+		TS_TRACE(v.showVector());
+
+
+		TS_TRACE("Erasing in the middle of array");
+		v = {4,5,6,7,8,9,10,11};
+		TS_TRACE(v.showVector());
+
+		v.erase(v.begin() + 2, v.begin() + 4);
+		TS_TRACE("v.erase(v.begin() + 2, v.begin()+ 4);");
+		TS_TRACE(v.showVector());
+	}
+
 
 	void testPush_back(void) {
 		Vector<std::string> v;
@@ -343,6 +387,35 @@ public:
 	}
 
 
+	void testShiftLeft() {
+			Vector<unsigned int> v(10);
+
+		v = {1,2,3,4,5,6,7,8,9,10};
+
+		/* This means that we shift everything from position 1 and forwards 1 step to the right */
+		v.shift_left(1);
+
+		TS_ASSERT_EQUALS(v[0], 2);
+		TS_ASSERT_EQUALS(v[1], 3);
+		TS_ASSERT_EQUALS(v[2], 4);
+		TS_ASSERT_EQUALS(v[1], 3); //value remains the same until we overwrite it
+
+		TS_TRACE("Vector after shift_right(1)");
+		TS_TRACE(v.showVector());
+
+		//{2,3,4,5,6,7,8,9,10,10}
+		TS_TRACE("shift left from 4");
+		v.shift_left(4);
+
+		//{2,3,4,6,7,8,9,10,10}
+		TS_TRACE("Vector after shift_left(4");
+		TS_TRACE(v.showVector());
+		TS_ASSERT_EQUALS(v[4],7);
+		TS_ASSERT_EQUALS(v[3],6); 
+		TS_ASSERT_EQUALS(v[0],2);
+	}
+
+
 	void testUnique_sort() {
 		
 		Vector<double> v(24);
@@ -375,26 +448,65 @@ public:
 
 		TS_TRACE("testing a small vector");
 
-		v = {3,10};
+		v.clear(); //sätter den till size 0;
+		v = {1, 1};
 
 		v.unique_sort();
 
-		TS_ASSERT_EQUALS(v.size(), 2);
+		TS_ASSERT_EQUALS(v.size(),1);
 		TS_TRACE( v.showVector() );
-		TS_ASSERT(v[0] == 3 && v[1] == 10 );
+		// TS_ASSERT(v[0] == 3);
 
 		v.unique_sort(false);
 
-		TS_ASSERT_EQUALS(v.size(), 2);
+		// TS_ASSERT_EQUALS(v.size(), 1);
 		TS_TRACE( v.showVector() );		
-		TS_ASSERT( v[0] == 10 && v[1] == 3 );
+		TS_ASSERT( v[0] == 1 && v.size() == 1 );
 
 		TS_TRACE("Test on zero-sized vector");
-		v.clear();
 		
+		v.clear();
 		TS_ASSERT_EQUALS(v.size(), 0);
-		v.unique_sort(false);
+		
+		v.unique_sort(false); //inget exception ska slängas
 
+	}
+
+	void testUnique_sort_Big() {
+		Vector<int> v;
+
+		v = { 2,2,2,2,3,3,3,3,4,4,4,4,4,4,4,5,5,5,5,5,5,6,6,6,6,6,6,6,7,7,7,7,7,8,8,8,8,8,8,8,8,9,9,9,9,9,10,10,10,10 };
+		v.unique_sort(false); //decending
+		TS_TRACE( v.showVector() );
+		TS_TRACE( v.size() );
+	}
+
+	void testUnique_sort_small() {
+		Vector<std::string> v;
+		v = {"a","b","c","d","e","f","g","h","i","j","k"};
+		
+		TS_TRACE("Vector content");
+		TS_TRACE(v.showVector());
+		v.unique_sort(); //acendiing
+		TS_ASSERT(v.size() == 11);
+
+		v.insert(0, "m");
+		v.insert(0, "p");
+
+		TS_TRACE(v.showVector());
+		TS_ASSERT(v.size() == 13);
+
+		v.unique_sort();
+
+		TS_ASSERT(v[11] == "m" && v[12] == "p");
+
+	}
+
+	void testUnique_sort_empty() {
+		Vector<int> v;
+		TS_TRACE("Test unqiue sort on empty vector");
+		TS_ASSERT_EQUALS( v.size(), 0 );
+		TS_ASSERT_THROWS_NOTHING( v.unique_sort() );
 	}
 
 	void testProblematic() {
@@ -421,5 +533,8 @@ public:
 		TS_ASSERT_EQUALS(vref.size(), 3);
 
 	}
+
+
+
 
 };
