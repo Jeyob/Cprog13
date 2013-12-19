@@ -1,0 +1,16 @@
+
+**** Build of configuration Debug for project Lab1_4 ****
+
+make all 
+Building file: ../test_template_vec.cpp
+Invoking: GCC C++ Compiler
+g++ -D__GXX_EXPERIMENTAL_CXX0X__ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++0x -MMD -MP -MF"test_template_vec.d" -MT"test_template_vec.d" -o "test_template_vec.o" "../test_template_vec.cpp"
+Finished building: ../test_template_vec.cpp
+ 
+Building target: Lab1_4
+Invoking: GCC C++ Linker
+g++  -o "Lab1_4"  ./Problematic.o ./kth_cprog_vektor.o ./test_template_vec.o   
+Finished building target: Lab1_4
+ 
+
+**** Build Finished ****
