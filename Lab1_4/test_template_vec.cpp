@@ -9,7 +9,7 @@ int main()
 
 	Vector<unsigned int> v(10,111);
 	v  = {2};
-	std::cout<<v.showVector()<<std::endl;
+	std::cout<<sizeof(int*)<<std::endl;
 	v.unique_sort();
 	std::cout<<v.showVector()<<std::endl;
 
