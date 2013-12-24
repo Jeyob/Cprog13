@@ -13,6 +13,8 @@ class Gregorian: public Date {
 
 public:
 
+	friend class TemplateTestSuite; /* used for cxxtest */
+
 	Gregorian();
 
 	Gregorian(int day);
