@@ -1,67 +1,98 @@
-/*
- * julian.cpp
- *
- *  Created on: 10 nov 2011
- *      Author: his-royalhighness
- */
-
-
+#include "julian.h"
+#include "kattistime.h"
+#include <iostream>
+#include <string>
+#include <vector>
 #include <math.h>
+#include <stdexcept>
+#include <stdlib.h>
+#include <time.h>
 
-namespace lab2{
+namespace lab2 {
 
-
-
-
-bool leap_julian(int year){
-
-	return ((year % 4) == 0 ? true:false);
+Julian::Julian() {
+	k_time(&mytime);
+	t = gmtime(&mytime);
+	setJDN(
+			julian_gregorian_interface::calendar_to_jd(t->tm_year + 1900,
+					t->tm_mon + 1, t->tm_mday));
 }
 
+Julian::Julian(int day) {
+	if (day < 0 || day > 31)
+		throw std::out_of_range("Illegal day");
+	k_time(&mytime);
+	t = gmtime(&mytime);
+	setJDN(
+			julian_gregorian_interface::calendar_to_jd(t->tm_year + 1900,
+					t->tm_mon + 1, day));
+}
 
-double julian_to_jd(int year, int month, int day){
-	int _month = month, _year = year;
+Julian::Julian(int month, int day) {
+	if (month <= 0 || month > MONTH_PER_YEAR || day > 31 || day <= 0)
+		throw std::out_of_range("Illegal day or month number");
+	k_time(&mytime);
+	t = gmtime(&mytime);
+	setJDN(
+			julian_gregorian_interface::calendar_to_jd(t->tm_year + 1900, month,
+					day));
+}
 
-	if(month<=2)
-	{
-		_month = month + 12;
-		_year = year - 1;
+Julian::Julian(int year, int month, int day) {
+	if (year <= 0 || month <= 0 || month > MONTH_PER_YEAR || day > 31
+			|| day <= 0
+			|| (ndays_in_month[month - 1] + (month == 2 && isLeap(year) ? 1 : 0))
+					< day)
+		throw std::out_of_range("Illegal");
+	setJDN(julian_gregorian_interface::calendar_to_jd(year, month, day));
+}
+
+Julian::Julian(const Date & d) {
+	operator=(d);
+}
+
+int Julian::year() const {
+	return 0;
+}
+
+int Julian::month() const {
+	return 0;
+}
+
+int Julian::day() const {
+	return 0;
+}
+
+Date& Julian::operator=(const Date & d) {
+	getJDNref() = (d.mod_julian_day() + 2400000.5);
+	return *this;
+}
+
+Date& Julian::operator++(int) {
+	++(this->getJDNref());
+	return *this;
+
+}
+Date& Julian::operator--(int) {
+	--(this->getJDNref());
+	return *this;
+}
+
+int Julian::isLeap(int year) const {
+	return (year % 4 == 0);
+}
+
+double Julian::calendar_to_jd(int year, int month, int day) const {
+	/* algorithm used from: http://en.wikipedia.org/wiki/Julian_day */
+
+	if (month <= 2) {
+		year--;
+		month += 12;
 	}
 
-	return (floor(365.25*(_year+4716))+floor(30.6001*(_month+1)) + day-1524.5);
+	return ((floor(365.25 * (year + 4716)))
+			+ floor((30.6001 * (month + 1)) + day) - 1524.5);
 }
 
-
-//
-//function jd_to_julian(td) {
-//    var z, a, alpha, b, c, d, e, year, month, day;
-//
-//    td += 0.5;
-//    z = Math.floor(td);
-//
-//    a = z;
-//    b = a + 1524;
-//    c = Math.floor((b - 122.1) / 365.25);
-//    d = Math.floor(365.25 * c);
-//    e = Math.floor((b - d) / 30.6001);
-//
-//    month = Math.floor((e < 14) ? (e - 1) : (e - 13));
-//    year = Math.floor((month > 2) ? (c - 4716) : (c - 4715));
-//    day = b - d - Math.floor(30.6001 * e);
-//
-//    /*  If year is less than 1, subtract one to convert from
-//        a zero based date system to the common era system in
-//        which the year -1 (1 B.C.E) is followed by year 1 (1 C.E.).  */
-//
-//    if (year < 1) {
-//        year--;
-//    }
-//
-//    return new Array(year, month, day);
-//}
-//
-
 }
-
-
 
