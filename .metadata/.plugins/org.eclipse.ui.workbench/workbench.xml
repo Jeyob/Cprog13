@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="17" version="2.0">
+<workbench progressCount="49" version="2.0">
 <workbenchAdvisor/>
 <window height="744" maximized="true" width="1024" x="0" y="24">
 <fastViewData fastViewLocation="1024"/>
@@ -14,7 +14,7 @@
 <coolItem id="org.eclipse.cdt.ui.buildConfigActionSet" itemType="typeToolBarContribution" x="106" y="30"/>
 <coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="156" y="30"/>
 <coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="88" y="30"/>
-<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="68" y="30"/>
+<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="96" y="30"/>
 <coolItem id="org.eclipse.wst.xml.ui.perspective.NewFileToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.debug.ui.launch.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
@@ -22,7 +22,8 @@
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="232" y="30"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
-<coolItem id="org.eclipse.cdt.ui.editor.CEditor" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="org.eclipse.cdt.ui.editor.CEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
 </coolbarLayout>
@@ -31,10 +32,71 @@
 <editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+<part id="4"/>
+<part id="5"/>
+<part id="6"/>
+<part id="7"/>
+<part id="8"/>
+<part id="9"/>
+<part id="10"/>
+<part id="11"/>
+</presentation>
 </folder>
 </info>
 </editorArea>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="gregorian.h" partName="gregorian.h" path="/home/jonas/git/Cprog13/Calender/gregorian.h" title="gregorian.h" tooltip="Calender/gregorian.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Calender/gregorian.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="577" selectionTopPixel="126"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="julian_gregorian_cal.cpp" partName="julian_gregorian_cal.cpp" path="/home/jonas/git/Cprog13/Calender/julian_gregorian_cal.cpp" title="julian_gregorian_cal.cpp" tooltip="Calender/julian_gregorian_cal.cpp" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Calender/julian_gregorian_cal.cpp"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="julian_gregorian_cal.h" partName="julian_gregorian_cal.h" path="/home/jonas/git/Cprog13/Calender/julian_gregorian_cal.h" title="julian_gregorian_cal.h" tooltip="Calender/julian_gregorian_cal.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Calender/julian_gregorian_cal.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="285" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="date.h" partName="date.h" path="/home/jonas/git/Cprog13/Calender/date.h" title="date.h" tooltip="Calender/date.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Calender/date.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="284" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="date.cpp" partName="date.cpp" path="/home/jonas/git/Cprog13/Calender/date.cpp" title="date.cpp" tooltip="Calender/date.cpp" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Calender/date.cpp"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="287" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="gregorian.cpp" partName="gregorian.cpp" path="/home/jonas/git/Cprog13/Calender/gregorian.cpp" title="gregorian.cpp" tooltip="Calender/gregorian.cpp" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Calender/gregorian.cpp"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2326" selectionTopPixel="1622"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="kattistime.h" partName="kattistime.h" path="/home/jonas/git/Cprog13/Calender/kattistime.h" title="kattistime.h" tooltip="Calender/kattistime.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Calender/kattistime.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1185" selectionTopPixel="348"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="kattistime.cpp" partName="kattistime.cpp" path="/home/jonas/git/Cprog13/Calender/kattistime.cpp" title="kattistime.cpp" tooltip="Calender/kattistime.cpp" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Calender/kattistime.cpp"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="343" selectionTopPixel="93"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="julian.h" partName="julian.h" path="/home/jonas/git/Cprog13/Calender/julian.h" title="julian.h" tooltip="Calender/julian.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Calender/julian.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="26" selectionOffset="111" selectionTopPixel="0"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="julian.cpp" partName="julian.cpp" path="/home/jonas/git/Cprog13/Calender/julian.cpp" title="julian.cpp" tooltip="Calender/julian.cpp" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Calender/julian.cpp"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1480" selectionTopPixel="800"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="vector.cpp" partName="vector.cpp" path="/home/jonas/git/Cprog13/Lab1/vector.cpp" title="vector.cpp" tooltip="Lab1/vector.cpp" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Lab1/vector.cpp"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="338" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="vector.h" partName="vector.h" path="/home/jonas/git/Cprog13/Lab1_4/vector.h" title="vector.h" tooltip="Lab1_4/vector.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Lab1_4/vector.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="54" selectionOffset="313" selectionTopPixel="117"/>
+</editor>
 </editors>
 <views>
 <view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
@@ -252,18 +314,175 @@
 </perspective>
 </perspectives>
 <workingSets/>
-<navigationHistory/>
+<navigationHistory>
+<editors>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Calender/julian.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Calender/julian.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Calender/julian_gregorian_cal.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Calender/date.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Calender/julian_gregorian_cal.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Calender/gregorian.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Lab1/Vektor.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Lab1/vector.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Lab1/vector.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Lab1_4/vector.h"/>
+</editors>
+<item historyLabel="julian.h" index="0">
+<position info="not_deleted" x="327" y="0"/>
+</item>
+<item historyLabel="julian_gregorian_cal.h" index="4">
+<position info="not_deleted" x="657" y="0"/>
+</item>
+<item historyLabel="julian.cpp" index="1">
+<position info="not_deleted" x="1879" y="0"/>
+</item>
+<item historyLabel="julian.h" index="0">
+<position/>
+</item>
+<item historyLabel="julian.cpp" index="1">
+<position info="not_deleted" x="1904" y="0"/>
+</item>
+<item historyLabel="julian.h" index="0">
+<position/>
+</item>
+<item historyLabel="julian.cpp" index="1">
+<position info="not_deleted" x="1655" y="0"/>
+</item>
+<item historyLabel="julian.h" index="0">
+<position info="not_deleted" x="17" y="0"/>
+</item>
+<item historyLabel="julian_gregorian_cal.h" index="4">
+<position info="not_deleted" x="657" y="0"/>
+</item>
+<item historyLabel="julian_gregorian_cal.cpp" index="2">
+<position info="not_deleted" x="3871" y="0"/>
+</item>
+<item historyLabel="julian.cpp" index="1">
+<position info="not_deleted" x="1616" y="0"/>
+</item>
+<item historyLabel="julian.h" index="0">
+<position info="not_deleted" x="491" y="0"/>
+</item>
+<item historyLabel="julian.cpp" index="1">
+<position info="not_deleted" x="1616" y="0"/>
+</item>
+<item historyLabel="julian.h" index="0">
+<position info="not_deleted" x="326" y="0"/>
+</item>
+<item historyLabel="gregorian.h" index="5">
+<position info="not_deleted" x="577" y="0"/>
+</item>
+<item historyLabel="julian_gregorian_cal.cpp" index="2">
+<position info="not_deleted" x="3871" y="0"/>
+</item>
+<item historyLabel="julian_gregorian_cal.h" index="4">
+<position info="not_deleted" x="657" y="0"/>
+</item>
+<item historyLabel="julian.cpp" index="1">
+<position info="not_deleted" x="477" y="0"/>
+</item>
+<item historyLabel="julian.h" index="0">
+<position info="not_deleted" x="326" y="0"/>
+</item>
+<item historyLabel="julian_gregorian_cal.h" index="4">
+<position info="not_deleted" x="657" y="0"/>
+</item>
+<item historyLabel="julian_gregorian_cal.cpp" index="2">
+<position info="not_deleted" x="3871" y="0"/>
+</item>
+<item historyLabel="gregorian.h" index="5">
+<position info="not_deleted" x="577" y="0"/>
+</item>
+<item historyLabel="julian.cpp" index="1">
+<position info="not_deleted" x="477" y="0"/>
+</item>
+<item historyLabel="julian.h" index="0">
+<position info="not_deleted" x="326" y="0"/>
+</item>
+<item historyLabel="julian_gregorian_cal.cpp" index="2">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="julian_gregorian_cal.h" index="4">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="julian_gregorian_cal.h" index="4">
+<position info="not_deleted" x="285" y="0"/>
+</item>
+<item historyLabel="julian_gregorian_cal.cpp" index="2">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="gregorian.h" index="5">
+<position info="not_deleted" x="577" y="0"/>
+</item>
+<item historyLabel="julian.h" index="0">
+<position info="not_deleted" x="323" y="0"/>
+</item>
+<item historyLabel="date.h" index="3">
+<position info="not_deleted" x="1993" y="0"/>
+</item>
+<item historyLabel="julian.h" index="0">
+<position info="not_deleted" x="323" y="0"/>
+</item>
+<item historyLabel="julian.cpp" index="1">
+<position info="not_deleted" x="477" y="0"/>
+</item>
+<item historyLabel="gregorian.h" index="5">
+<position info="not_deleted" x="577" y="0"/>
+</item>
+<item historyLabel="julian.h" index="0">
+<position/>
+</item>
+<item historyLabel="julian.cpp" index="1">
+<position info="not_deleted" x="1224" y="0"/>
+</item>
+<item historyLabel="julian.h" index="0">
+<position info="not_deleted" x="180" y="0"/>
+</item>
+<item historyLabel="gregorian.h" index="5">
+<position info="not_deleted" x="577" y="0"/>
+</item>
+<item historyLabel="date.h" index="3">
+<position info="not_deleted" x="284" y="0"/>
+</item>
+<item historyLabel="Vektor.h" index="6">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="date.h" index="3">
+<position info="not_deleted" x="284" y="0"/>
+</item>
+<item historyLabel="vector.cpp" index="7">
+<position info="not_deleted" x="338" y="0"/>
+</item>
+<item historyLabel="vector.h" index="8">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="vector.cpp" index="7">
+<position info="not_deleted" x="338" y="0"/>
+</item>
+<item historyLabel="vector.h" index="9">
+<position info="not_deleted" x="313" y="54"/>
+</item>
+<item historyLabel="julian.cpp" index="1">
+<position info="not_deleted" x="177" y="0"/>
+</item>
+<item historyLabel="julian.h" index="0">
+<position info="not_deleted" x="111" y="26"/>
+</item>
+<item historyLabel="julian.cpp" index="1">
+<position info="not_deleted" x="177" y="0"/>
+</item>
+<item historyLabel="julian.h" index="0">
+<position info="not_deleted" x="111" y="26"/>
+</item>
+<item active="true" historyLabel="julian.cpp" index="1">
+<position info="not_deleted" x="177" y="0"/>
+</item>
+</navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
-<trimArea IMemento.internal.id="16384">
-<trimItem IMemento.internal.id="topLeft"/>
-</trimArea>
-<trimArea IMemento.internal.id="131072">
-<trimItem IMemento.internal.id="topRight"/>
-</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 </trimArea>
@@ -271,19 +490,54 @@
 <trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
-<trimItem IMemento.internal.id="bottom"/>
 </trimArea>
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stl_vector.h" tooltip="/usr/include/c++/4.7/bits/stl_vector.h">
-<persistable path="/usr/include/c++/4.7/bits/stl_vector.h" project="Lab1_4"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="test_template_vec.cpp" tooltip="Lab1_4/test_template_vec.cpp">
-<persistable path="/Lab1_4/test_template_vec.cpp"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="vector.h" tooltip="Lab1_4/vector.h">
 <persistable path="/Lab1_4/vector.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="vector.h" tooltip="Lab1/vector.h">
+<persistable path="/Lab1/vector.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="vector.cpp" tooltip="Lab1/vector.cpp">
+<persistable path="/Lab1/vector.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Vektor.h" tooltip="Lab1/Vektor.h">
+<persistable path="/Lab1/Vektor.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="testSuite.cpp" tooltip="Calender/testSuite.cpp">
+<persistable path="/Calender/testSuite.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="julian.cpp" tooltip="Calender/julian.cpp">
+<persistable path="/Calender/julian.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="julian.h" tooltip="Calender/julian.h">
+<persistable path="/Calender/julian.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="cprog09lab22b.cpp" tooltip="Calender/cprog09lab22b.cpp">
+<persistable path="/Calender/cprog09lab22b.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="kattistime.cpp" tooltip="Calender/kattistime.cpp">
+<persistable path="/Calender/kattistime.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="kattistime.h" tooltip="Calender/kattistime.h">
+<persistable path="/Calender/kattistime.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="gregorian.cpp" tooltip="Calender/gregorian.cpp">
+<persistable path="/Calender/gregorian.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="date.cpp" tooltip="Calender/date.cpp">
+<persistable path="/Calender/date.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="date.h" tooltip="Calender/date.h">
+<persistable path="/Calender/date.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="julian_gregorian_cal.h" tooltip="Calender/julian_gregorian_cal.h">
+<persistable path="/Calender/julian_gregorian_cal.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="julian_gregorian_cal.cpp" tooltip="Calender/julian_gregorian_cal.cpp">
+<persistable path="/Calender/julian_gregorian_cal.cpp"/>
 </file>
 </mruList>
 </workbench>
