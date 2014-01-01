@@ -10,6 +10,8 @@ class Gregorian: public julian_gregorian_interface  {
 
 public:
 
+	friend class TemplateTestSuite; /* used for cxxtest */
+
 	Gregorian();
 
 	Gregorian(int day);
@@ -33,10 +35,8 @@ public:
 	virtual int day() const;
 
 private:
-	int isLeap(int year) const;
 	double calendar_to_jd(int year, int month, int day) const;
-	friend class TemplateTestSuite; /* used for cxxtest */
-};
+	int isLeap(int year) const;
+};}
 
-}
 #endif /* GREGORIAN_H_ */

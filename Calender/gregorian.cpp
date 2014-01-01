@@ -55,15 +55,14 @@ Date& Gregorian::operator=(const Date & d) {
 
 
 Gregorian& Gregorian::operator++(int){
-		Gregorian old(*this);
 		++(this->getJDNref());
-		return old;
+		return *this;
 
 	}
 Gregorian& Gregorian::operator--(int){
 		Gregorian old(*this);
 		--(this->getJDNref());
-		return old;
+		return *this;
 }
 
 

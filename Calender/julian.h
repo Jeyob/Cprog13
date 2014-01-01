@@ -18,18 +18,18 @@ public:
 
 	}
 
-	Date & operator=(const Date &);
-	Date& operator++(int);
-	Date& operator--(int);
+	Julian& operator=(const Date &);
+	Julian& operator++(int);
+	Julian& operator--(int);
 
 	virtual int year() const;
 	virtual int month() const;
 	virtual int day() const;
+	int week_day() const;
 
 private:
 	double calendar_to_jd(int year, int month, int day) const;
 	int isLeap(int year) const;
-	int hej;
 };}
 
 #endif /* JULIAN_H_ */

@@ -19,7 +19,7 @@ public:
 	int days_per_week() const;
 	int months_per_year() const;
 	int days_this_month() const;
-	int week_day() const;
+	virtual int week_day() const;
 
 	Date& add_year(int n = 1);
 	Date& add_month(int n = 1);

@@ -52,10 +52,11 @@ Date& julian_gregorian_interface::add_year(int n) {
 	bool _isLeap = isLeap(curr_year), nextLeap = isLeap(curr_year + n);
 	int _i = n < 0 ? -1 : 1;
 
-	if (nextLeap && _isLeap) // leap --> leap
-		JDN += (static_cast<int>(calendar_to_jd((curr_year + n), m, d) - JDN));
+	if ( (nextLeap && _isLeap) || (!nextLeap && !_isLeap) || ( nextLeap && !_isLeap ) ) // leap --> leap
+		JDN += (static_cast<double>(calendar_to_jd((curr_year + n), m, d) - JDN));
+
 	else {
-		for (int i = 1; i < abs(n) + 1; i++) {
+		for ( int i = 1; i < abs(n) + 1; i++ ) {
 			nextLeap = isLeap(curr_year + (i * _i));
 			_isLeap = isLeap(year());
 			m = month();

@@ -31,7 +31,7 @@ public:
 
 	Date() {
 	}
-	Date(double _JDN) :
+	explicit Date(double _JDN) :
 			JDN(_JDN) {
 	}
 	Date(const Date & d) :

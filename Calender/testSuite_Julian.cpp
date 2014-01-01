@@ -5,27 +5,25 @@
 
 using namespace lab2;
 
-class Julian_Test_Methods {
 
-public:
-	static double calendar_to_jd(int year, int month, int day) {
-	/* algorithm used from: http://en.wikipedia.org/wiki/Julian_day */
-
-	if (month <= 2) {
-		year--;
-		month += 12;
-	}
-
-	return ((floor(365.25 * (year + 4716)))
-			+ floor((30.6001 * (month + 1)) + day) - 1524.5);
-}
-
-};
 
 class TemplateTestSuite : public CxxTest::TestSuite
 {
 
 public: 
+
+	void test_add_month() {
+
+		Julian j1(2004,2,29);
+
+		j1.add_month();
+		TS_TRACE(j1.week_day());
+		TS_TRACE(j1.week_day_name());
+		TS_TRACE(j1.year());
+		TS_TRACE(j1.month());
+		TS_TRACE(j1.day());
+
+	}
 
 	void test_year() {
 
@@ -39,9 +37,21 @@ public:
 
 	}
 
+	void test_Week_day() {
+
+		Julian j(1993,2,28);
+		TS_TRACE(j.week_day());
+		TS_TRACE(j.week_day_name());
+		TS_TRACE(j.year());
+		TS_TRACE(j.month());
+		TS_TRACE(j.day());
+		TS_ASSERT_EQUALS(j.week_day(), 6);
+
+	}
+
 	void test_calendar_to_JD() {
-		TS_TRACE("1989-07-18 TO JD");
-		TS_ASSERT_EQUALS(Julian_Test_Methods::calendar_to_jd(1989,7,18), 2447738.5);
+		TS_TRACE("1992-07-18 TO JD");
+		// TS_ASSERT_EQUALS(Julian_Test_Methods::calendar_to_jd(1989,7,18), 2447738.5);
 	}
 
 	void test_mod_julian_day() {
