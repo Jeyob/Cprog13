@@ -47,7 +47,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="cprog09lab23.cpp|cprog09lab22a.cpp|cprog09lab22b.cpp|testSuite.cpp|testSuite_Julian.cpp|templateTester.cpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="cprog09lab22c.cpp|cprog09lab23.cpp|cprog09lab22a.cpp|cprog09lab22b.cpp|testSuite.cpp|testSuite_Julian.cpp|templateTester.cpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -95,7 +95,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="cprog09lab23.cpp|cprog09lab22a.cpp|cprog09lab22b.cpp|testSuite.cpp|testSuite_Julian.cpp|templateTester.cpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="cprog09lab22c.cpp|cprog09lab23.cpp|cprog09lab22a.cpp|cprog09lab22b.cpp|testSuite.cpp|testSuite_Julian.cpp|templateTester.cpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

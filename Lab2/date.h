@@ -11,7 +11,6 @@ namespace lab2 {
 class Date {
 
 public:
-	friend class Calendar;
 	friend ostream& operator<<(ostream& os, const Date& d);
 
 	/* Getters - readonly therefore "const" */
