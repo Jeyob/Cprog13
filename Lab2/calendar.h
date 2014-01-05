@@ -13,41 +13,12 @@ using namespace std;
 
 namespace lab2 {
 
-//struct sEvent {
-//
-//	string eventTxt;
-//
-//	sEvent() {
-//	}
-//
-//	explicit sEvent(string eventTxt) :
-//			eventTxt(eventTxt) {
-//	}
-//
-//	sEvent(const sEvent& other) {
-//		this->eventTxt = other.eventTxt;
-//	}
-//
-//	template<typename U>
-//	sEvent& operator=(const sEvent& other) {
-//		this->eventTxt = other.eventTxt;
-//		return *this;
-//	}
-//
-//	bool operator==(const sEvent& other) const {
-//		return (this->eventTxt == other.eventTxt);
-//	}
-//
-//	friend ostream& operator<<(ostream & os, const sEvent e) {
-//		os << e.eventTxt;
-//		return os;
-//	}
-//};
-
 template<typename T> struct sEventColl {
 	T _date;
-	list<string>  event_list;
+	list<string> event_list;
 
+	template<typename U>
+	friend struct sEventColl;
 
 	sEventColl(T d, const string& eventStr) :
 			_date(d) {
@@ -56,25 +27,35 @@ template<typename T> struct sEventColl {
 
 	template<typename U>
 	sEventColl(const sEventColl<U>& other) {
-		_date = other.__d__;
-
-		 this->event_list.clear();
-
-		for (typename list<string>::const_iterator it =
-				other.event_list.crbegin(); it != other.event_list.crend();
+		_date = other._date;
+		this->event_list.clear();
+		for (typename list<string>::const_iterator it = other.event_list.cbegin();
+				it != other.event_list.cend();
 				it++) {
 			event_list.push_back(*it);
 		}
 	}
 
-	 ~sEventColl(){}
+	~sEventColl() {
+	}
 
+	bool operator<(const T & d) const {
+		return (_date <  d );
+	}
+
+	bool operator>(const T & d) const {
+		return ( _date > d );
+	}
+
+	bool operator==(const T & d) const {
+		return _date==d;
+	}
 	bool operator<=(const T & d) const {
-		return ((d == _date) || (_date < d));
+		return (operator ==(d) || operator <(d));
 	}
 
 	bool operator>=(const T & d) const {
-		return ((_date == d) || (_date > (d)));
+		return (operator ==(d) || operator >(d));
 	}
 
 	bool removeEvent(string eventText) {
@@ -114,27 +95,28 @@ template<typename T> struct sEventColl {
 	}
 };
 
-template<typename T>
-class Calendar;
-
-template<typename T>
-ostream& operator<<(ostream& out, const Calendar<T>& cal);
-
 template<typename T> class Calendar {
 	static_assert(is_base_of<lab2::Date,T>::value,"Class must be derived of Date");
 
 private:
 	T cur_date;
 	vector<sEventColl<T>> e_list;
+	template<typename U>
+	friend class Calendar;
 
 public:
 
 	Calendar();
+
+	template<typename U>
+	Calendar(const Calendar<U> & other);
+
 	~Calendar();
 
 	bool set_date(int year, int month, int day);
 
-	Calendar& operator=(const Calendar<Date>&);
+	template<typename U>
+	Calendar& operator=(const Calendar<U>&);
 
 	bool add_event(string event);
 	bool add_event(string event, int day);
@@ -146,6 +128,18 @@ public:
 	bool remove_event(string event, int day, int month);
 	bool remove_event(string event, int day, int month, int year);
 
+
+	friend ostream& operator<<(ostream & os, const Calendar& c){
+		typename std::vector<sEventColl<T>>::const_iterator it = c.e_list.begin();
+
+		for (; it!=c.e_list.end(); it++) {
+			if( it->_date > c.cur_date)
+				os << *it;
+		}
+
+		return os;
+	}
+
 };
 
 template<typename T>
@@ -155,11 +149,25 @@ Calendar<T>::Calendar() {
 }
 
 template<typename T>
+template<typename U>
+Calendar<T>::Calendar(const Calendar<U> & other ) {
+	operator =(other);
+}
+template<typename T>
 Calendar<T>::~Calendar() {
 }
 
 template<typename T>
-Calendar<T>& Calendar<T>::operator=(const Calendar<Date>& other) {
+template<typename U>
+Calendar<T>& Calendar<T>::operator=(const Calendar<U>& other) {
+	this->cur_date = other.cur_date;
+
+	typename vector<sEventColl<U>>::const_iterator it = other.e_list.cbegin();
+	for(; it!=other.e_list.end(); it++ ){
+		sEventColl<T> d(*it);
+		e_list.push_back(d);
+	}
+
 	return *this;
 }
 
@@ -167,7 +175,8 @@ template<typename T>
 bool Calendar<T>::set_date(int year, int month, int day) {
 
 	try {
-		cur_date = new T(year, month, day);
+		 T d(year, month, day);
+		cur_date = d;
 	} catch (exception& e) {
 		return false;
 	}
@@ -190,22 +199,27 @@ bool inline Calendar<T>::add_event(string event, int day, int month) {
 }
 
 template<typename T>
-bool inline Calendar<T>::add_event(string event, int day, int month,
-		int year) {
+bool inline Calendar<T>::add_event(string event, int day, int month, int year) {
 
 	try {
 		T d(year, month, day);
 		typename vector<sEventColl<T>>::iterator it = e_list.begin();
-		while (it != e_list.end() && (d > *it || d != *it)) {
+		while ( it != e_list.end() && it->_date <= d) {
+			if(it->_date == d) {
+				return it->addEvent(event);
+			}
 			it++;
 		}
 
-		if (*it == d) {
-			return it->addEvent(event);
+		sEventColl<T> e(d,event);
+
+		if (it!=e_list.end()) {
+			e_list.insert(it, e);
 		} else {
-			e_list.insert(it, new sEventColl<T>(d, event));
-			return true;
+			e_list.push_back(e);
 		}
+
+		return true;
 
 	} catch (exception& e) {
 		return false;
@@ -235,7 +249,7 @@ bool inline Calendar<T>::remove_event(string event, int day, int month,
 	try {
 		T d(year, month, day);
 		typename vector<sEventColl<T>>::iterator it = e_list.begin();
-		while ((it++) != e_list.end()) {
+		for(;it!= e_list.end(); it++) {
 			if (*it == d) {
 				bool isRemoved = it->removeEvent(event);
 				if (isRemoved && it->isEmpty()) {
@@ -248,8 +262,9 @@ bool inline Calendar<T>::remove_event(string event, int day, int month,
 	} catch (exception& e) {
 		return false;
 	}
-
 }
+
+
 
 }
 
